@@ -1,12 +1,17 @@
 <Project>
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework Condition="$(TargetFramework)==''">net8.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
         <RootNamespace>$(AssemblyName)</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="schema.json" />
+    </ItemGroup>
 
 </Project>

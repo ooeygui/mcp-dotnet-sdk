@@ -72,7 +72,6 @@ namespace Abstractions.Models;
         }
     }
     
-
     public record ProgressToken
     {
 

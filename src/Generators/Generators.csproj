@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">  
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework> <!-- Target framework -->
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules> <!-- Enforce extended analyzer rules -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild> <!-- Generates a package at build -->
+    <IncludeBuildOutput>false</IncludeBuildOutput> <!-- Do not include the generator as a lib dependency -->
+    <!-- <NoPackageAnalysis>true</NoPackageAnalysis> Turns off NU5128 -->
+    <NoWarn>NU5128</NoWarn> <!-- Suppresses NU5128 -->
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <GetTargetPathDependsOn>
+      $(GetTargetPathDependsOn);GetDependencyTargetPaths
+    </GetTargetPathDependsOn>
+    <RefDependencyOutputPath>lib\$(TargetFramework)\*.dll</RefDependencyOutputPath>
+  </PropertyGroup>
+
+  <Target Name="GetDependencyTargetPaths">
+    <ItemGroup>
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGMicrosoft_Extensions_FileProviders_Abstractions)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGParlot)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGFluid_Core)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGNamotion_Reflection)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGNewtonsoft_Json)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGNJsonSchema_CodeGeneration_CSharp)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGNJsonSchema_CodeGeneration)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGNJsonSchema_Annotations)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(PKGNJsonSchema)\$(RefDependencyOutputPath)" IncludeRuntimeDependency="false" />
+    </ItemGroup>
+  </Target>
+  
+  <ItemGroup>
+    <!-- Package the generator in the analyzer directory of the nuget package -->
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGMicrosoft_Extensions_FileProviders_Abstractions)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGFluid_Core)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGParlot)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGNamotion_Reflection)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGNewtonsoft_Json)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGNJsonSchema_CodeGeneration_CSharp)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGNJsonSchema_CodeGeneration)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGNJsonSchema_Annotations)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PKGNJsonSchema)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="README.md" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="Parlot" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="Fluid.Core" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="Namotion.Reflection" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="Newtonsoft.Json" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="NJsonSchema" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="NJsonSchema.Annotations" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="NJsonSchema.CodeGeneration" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="NJsonSchema.CodeGeneration.CSharp" PrivateAssets="all" GeneratePathProperty="true" />
+  </ItemGroup>
+</Project>

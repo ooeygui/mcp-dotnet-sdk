@@ -122,3 +122,22 @@ public record PromptArgument
     [Description("Indicates if the argument is required.")]
     public bool? Required { get; init; }
 }
+
+
+/**
+ * An incomplete set of error codes that may appear in JSON-RPC responses.
+ */
+public enum ErrorCode 
+{
+  // SDK error codes
+  ConnectionClosed = -1,
+  RequestTimeout = -2,
+
+  // Standard JSON-RPC error codes
+  ParseError = -32700,
+  InvalidRequest = -32600,
+  MethodNotFound = -32601,
+  InvalidParams = -32602,
+  InternalError = -32603,
+}
+

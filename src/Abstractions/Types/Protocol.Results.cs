@@ -72,7 +72,6 @@ public record ListRootsResult : IResult, IClientResult
     public List<Root> Roots { get; init; } = new();
 }
 
-
 // ClientResult
 public record ClientResult : IResult
 {
