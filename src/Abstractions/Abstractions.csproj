@@ -8,12 +8,11 @@
   <ItemGroup>
     <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
     <ProjectReference Include="..\Generators\*.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <PackageReference Include="Newtonsoft.Json" />
   </ItemGroup>
 
-  <ItemGroup>  
-    <PackageReference Include="NJsonSchema.CodeGeneration.CSharp"
-      PrivateAssets="all"
-      GeneratePathProperty="true" />
+  <ItemGroup>
+    <AdditionalFiles Include="schema.json" />
   </ItemGroup>
 
 </Project>

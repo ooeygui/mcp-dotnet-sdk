@@ -1,0 +1,26 @@
+<Project Sdk="MSTest.Sdk/3.6.3">
+
+  <PropertyGroup>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>generated</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Generators\Generators.csproj" OutputItemType="Analyzer"/>
+    <PackageReference Include="NJsonSchema.CodeGeneration.CSharp" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="nunit" />
+    <PackageReference Include="NUnit.Analyzers">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NUnit3TestAdapter" />
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
+    <AdditionalFiles Include="mcp.json" />
+    <None Update="mcp.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

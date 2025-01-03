@@ -10,8 +10,4 @@
         <RootNamespace>$(AssemblyName)</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-        <AdditionalFiles Include="schema.json" />
-    </ItemGroup>
-
 </Project>
