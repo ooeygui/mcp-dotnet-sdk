@@ -42,18 +42,19 @@
 //   onmessage?: (message: JSONRPCMessage) => void;
 // }
 
-namespace Abstractions.Models;
-
-public interface ITransport
+namespace Abstractions.Models
 {
-    Task StartAsync(CancellationToken cancellationToken);
-    Task SendAsync(IRequest message, CancellationToken cancellationToken);
-    Task CloseAsync(CancellationToken cancellationToken)
+    public interface ITransport
     {
-        //GeneratedNamespace.MyGeneratedClass.MyGeneratedMethod();
-        return Task.CompletedTask;
+        Task StartAsync(CancellationToken cancellationToken);
+        Task SendAsync(IRequest message, CancellationToken cancellationToken);
+        Task CloseAsync(CancellationToken cancellationToken)
+        {
+            //GeneratedNamespace.MyGeneratedClass.MyGeneratedMethod();
+            return Task.CompletedTask;
+        }
+        event Action OnClose;
+        event Action<Exception> OnError;
+        event Action<IRequest> OnMessage;
     }
-    event Action OnClose;
-    event Action<Exception> OnError;
-    event Action<IRequest> OnMessage;
 }

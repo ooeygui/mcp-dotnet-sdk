@@ -64,6 +64,7 @@
     <PackageReference Include="NJsonSchema.Annotations" PrivateAssets="all" GeneratePathProperty="true" />
     <PackageReference Include="NJsonSchema.CodeGeneration" PrivateAssets="all" GeneratePathProperty="true" />
     <PackageReference Include="NJsonSchema.CodeGeneration.CSharp" PrivateAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="StreamJsonRpc" />
 
     <None Include="$(PKGMicrosoft_Extensions_FileProviders_Abstractions)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     <None Include="$(PKGFluid_Core)\$(RefDependencyOutputPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
